@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "Summarize AI",
+  "description": "Summarizes google meet and youtube video.",
+  "version": "1.0",
+  "action":{
+    "default_popup": "src/popup.html"
+
+  },
+  "background": {
+    "service_worker": "./src/scripts/background.js"
+  },
+  "content_scripts": [
+    {
+      
+      "matches": ["https://meet.google.com/*"],
+      "js": ["src/scripts/content/main.js"]
+    }
+  ]
+}
