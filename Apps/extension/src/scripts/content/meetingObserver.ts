@@ -1,7 +1,8 @@
 let ON_CALL = false;
 
-export const detectMeetingStart = (observer) => {
+export const detectMeetingStart = (observer: MutationObserver): void => {
   const meetElement = document.body.querySelector("div[jscontroller='kAPMuc']");
+  
   if (meetElement) {
     ON_CALL = true;
     chrome.runtime.sendMessage({ type: "log", text: "Hello jee" });
@@ -13,9 +14,10 @@ export const detectMeetingStart = (observer) => {
   }
 };
 
-export const observeMeetingStart = () => {
+export const observeMeetingStart = (): void => {
   const observer = new MutationObserver(() => {
-    detectMeetingStart(observer)
+    detectMeetingStart(observer);
   });
-  observer.observe(document.body, {subtree: true });
+  
+  observer.observe(document.body, { subtree: true, childList: true });
 };

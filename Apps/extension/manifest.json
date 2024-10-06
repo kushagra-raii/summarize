@@ -5,16 +5,19 @@
   "version": "1.0",
   "action":{
     "default_popup": "src/popup.html"
-
   },
   "background": {
-    "service_worker": "./src/scripts/background.js"
+    "service_worker": "./dist/background.bundle.js"
   },
   "content_scripts": [
     {
-      
       "matches": ["https://meet.google.com/*"],
-      "js": ["src/scripts/content/main.js"]
+      "js": ["./dist/content.bundle.js"]
     }
-  ]
+  ],
+  "icons": {
+    "16": "dist/images/icon/icon.png",
+    "48": "dist/images/icon/icon.png",
+    "128": "dist/images/icon/icon.png"
+  }
 }
